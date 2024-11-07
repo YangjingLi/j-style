@@ -1,0 +1,120 @@
+.lyj-button {
+  --lyj-button-font-weight: var(--lyj-font-weight-primary);
+  --lyj-button-border-color: var(--lyj-border-color);
+  --lyj-button-bg-color: var(--lyj-fill-color-blank);
+  --lyj-button-text-color: var(--lyj-text-color-regular);
+  --lyj-button-disabled-text-color: var(--lyj-disabled-text-color);
+  --lyj-button-disabled-bg-color: var(--lyj-fill-color-blank);
+  --lyj-button-disabled-border-color: var(--lyj-border-color-light);
+  --lyj-button-hover-text-color: var(--lyj-color-primary);
+  --lyj-button-hover-bg-color: var(--lyj-color-primary-light-9);
+  --lyj-button-hover-border-color: var(--lyj-color-primary-light-7);
+  --lyj-button-active-text-color: var(--lyj-button-hover-text-color);
+  --lyj-button-active-border-color: var(--lyj-color-primary);
+  --lyj-button-active-bg-color: var(--lyj-button-hover-bg-color);
+  --lyj-button-outline-color: var(--lyj-color-primary-light-5);
+  --lyj-button-active-color: var(--lyj-text-color-primary);
+}
+.lyj-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1;
+  height: 32px;
+  white-space: nowrap;
+  cursor: pointer;
+  color: var(--lyj-button-text-color);
+  text-align: center;
+  box-sizing: border-box;
+  outline: none;
+  transition: 0.1s;
+  font-weight: var(--lyj-button-font-weight);
+  user-select: none;
+  vertical-align: middle;
+  background-color: var(--lyj-button-bg-color);
+  border: var(--lyj-border);
+  border-color: var(--lyj-button-border-color);
+  padding: 8px 15px;
+  font-size: var(--lyj-font-size-base);
+  border-radius: var(--lyj-border-radius-base);
+  & + & {
+    margin-left: 12px;
+  }
+  &:hover,
+  &:focus {
+    color: var(--lyj-button-hover-text-color);
+    border-color: var(--lyj-button-hover-border-color);
+    background-color: var(--lyj-button-hover-bg-color);
+    outline: none;
+  }
+  &:active {
+    color: var(--lyj-button-active-color);
+    border-color: var(--lyj-button-active-border-color);
+    background-color: var(--lyj-button-active-bg-color);
+    outline: none;
+  }
+  &.is-plain {
+    --lyj-button-hover-text-color: var(--lyj-color-primary);
+    --lyj-button-hover-bg-color: var(--lyj-fill-color-blank);
+    --lyj-button-hover-border-color: var(--lyj-color-primary);
+  }
+  &.is-round {
+    border-radius: var(--lyj-border-radius-round);
+  }
+  &.is-circle {
+    border-radius: 50%;
+    padding: 8px;
+  }
+  &.is-disabled,
+  &.is-disabled:hover,
+  &.is-disabled:focus,
+  &[disabled],
+  &[disabled]:hover,
+  &[disabled]:focus {
+    color: var(--lyj-button-disabled-text-color);
+    cursor: not-allowed;
+    background-image: none;
+    background-color: var(--lyj-button-disabled-bg-color);
+    border-color: var(--lyj-button-disabled-border-color);
+  }
+}
+@each $val in primary, success, warning, info, danger {
+  .lyj-button--$(val) {
+    --lyj-button-text-color: var(--lyj-color-white);
+    --lyj-button-bg-color: var(--lyj-color-$(val));
+    --lyj-button-border-color: var(--lyj-color-$(val));
+    --lyj-button-outline-color: var(--lyj-color-$(val)-light-5);
+    --lyj-button-active-color: var(--lyj-color-$(val)-dark-2);
+    --lyj-button-disabled-text-color: var(--lyj-color-white);
+    --lyj-button-disabled-bg-color: var(--lyj-color-$(val)-light-5);
+    --lyj-button-disabled-border-color: var(--lyj-$(val)-light);
+    --lyj-button-hover-text-color: var(--lyj-color-white);
+    --lyj-button-hover-bg-color: var(--lyj-color-$(val)-light-3);
+    --lyj-button-hover-border-color: var(--lyj-color-white);
+    --lyj-button-active-border-color: var(--lyj-color-$(val)-dark-2);
+    --lyj-button-active-bg-color: var(--lyj-color-$(val)-dark-2);
+  }
+  .lyj-button--$(val).is-plain {
+    --lyj-button-text-color: var(--lyj-color-$(val));
+    --lyj-button-bg-color: var(--lyj-color-$(val)-light-9);
+    --lyj-button-border-color: var(--lyj-color-$(val)-light-5);
+    --lyj-button-hover-text-color: var(--lyj-color-white);
+    --lyj-button-hover-bg-color: var(--lyj-color-$(val));
+    --lyj-button-hover-border-color: var(--lyj-color-$(val));
+    --lyj-button-active-text-color: var(--lyj-color-white);
+  }
+}
+.lyj-button--large {
+  --lyj-button-size: 40px;
+  height: var(--lyj-button-size);
+  padding: 12px 19px;
+  font-size: var(--lyj-font-size-base);
+  border-radius: var(--lyj-borrder-radius-base);
+}
+.lyj-button--small {
+  --lyj-button-size: 24px;
+  height: var(--lyj-button-size);
+  padding: 5px 11px;
+  font-size: 12px;
+  border-radius: calc(var(--lyj-borrder-radius-base) - 1px);
+}
