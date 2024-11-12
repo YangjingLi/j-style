@@ -1,13 +1,16 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import Button from './components/Button/Button.vue'
+import Collapse from './components/Collapse/Collapse.vue'
+import Item from './components/Collapse/CollapseItem.vue'
 import type { ButtonInstance } from './components/Button/types'
 
 const buttonRef = ref<ButtonInstance | null>(null)
+const openValue = ref(['a'])
 onMounted(() => {
-  // if (buttonRef.value) {
-  //   console.log(buttonRef.value.ref)
-  // }
+  if (buttonRef.value) {
+    console.log(buttonRef.value.ref)
+  }
 })
 
 const testClick = () => {
@@ -27,12 +30,12 @@ const testClick = () => {
   </header>
 
   <main>
-    <Button ref="buttonRef">Test Button</Button>
+    <Button ref="buttonRef" @click="testClick">Test Button</Button>
     <Button plain>Plain Button</Button>
     <Button round>Round Button</Button>
     <Button circle>Circle Button</Button>
     <Button disabled>Disabled Button</Button><br /><br />
-    <Button type="primary" @click="testClick">Primary</Button>
+    <Button type="primary">Primary</Button>
     <Button type="success">Success</Button>
     <Button type="info">Info</Button>
     <Button type="warning">Warning</Button>
@@ -44,6 +47,22 @@ const testClick = () => {
     <Button type="danger" plain>Danger</Button><br /><br />
     <Button size="large">Large</Button>
     <Button size="small">Small</Button>
+    <collapse v-model="openValue" accordion>
+      <Item name="a">
+        <template #title>
+          <h1>Title A</h1>
+        </template>
+        <h1>headline title</h1>
+        <div>this is content aaaaaa</div>
+      </Item>
+      <Item name="b" title="Title B">
+        <div>this is content bbbbbbb</div>
+      </Item>
+      <Item name="c" title="Disabled C" disabled>
+        <div>this is content cccccc</div>
+      </Item>
+    </collapse>
+    {{ openValue }}
   </main>
 </template>
 

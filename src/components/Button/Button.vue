@@ -23,7 +23,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import type { ButtonProps } from './types'
-defineOptions({ name: 'LyjButton', inheritAttrs: false })
+defineOptions({ name: 'LyjButton' })
 withDefaults(defineProps<ButtonProps>(), { nativeType: 'button' })
 const _ref = ref<HTMLButtonElement>()
 defineExpose({
